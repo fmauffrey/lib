@@ -42,7 +42,7 @@ def check_extension():
         sys.exit("\nIncorrect file format. File should end in .fq, .fastq, .fa or .fasta.\n")
 
 
-def seq_filter(file_ext):
+def seq_split(file_ext):
     param = sys.argv[1]
     value = sys.argv[2]
     fasta_sequences = SeqIO.parse(sys.argv[3], file_ext)
@@ -88,13 +88,13 @@ def seq_filter(file_ext):
 if __name__ == "__main__":
     if check_arg():
         seq_type = check_extension()
-        seq_filter(seq_type)
+        seq_split(seq_type)
     else:
-        print("\n#####################################\n"
-              "########## fasta_split.py ############\n"
-              "#####################################\n"
-              "\nSplit fasta file into multiple files based on chosen parameter\n\n"
-              "Usage: fasta_split.py [parameter] [value] [file.fasta]\n\n"
-              "Parameters are:\n"
-              "length_max = maximum cumulated length of contigs per file\n"
-              "contigs_max = maximum number of contigs per file\n\n")
+        sys.exit("\n#####################################\n"
+                 "########## FastSplit.py ############\n"
+                 "#####################################\n"
+                 "\nSplit fasta/fastq file into multiple files based on chosen parameter\n\n"
+                 "Usage: FastSplit.py [parameter] [value] [file]\n\n"
+                 "Parameters are:\n"
+                 "length_max = maximum cumulated length of contigs per file\n"
+                 "contigs_max = maximum number of contigs per file\n\n")
