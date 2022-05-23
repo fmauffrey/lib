@@ -10,7 +10,7 @@ Biopython >= 1.79
 
 ### FastSplit
 
-FastSplit can split a fasta/fastq file into multiple smaller files based on a filter parameter.
+FastSplit can split a fasta/fastq file into multiple smaller files based on a filtering parameter.
 
 FastSplit.py [parameter] [value] [file]  
 Parameters are:  
