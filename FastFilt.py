@@ -7,8 +7,6 @@ try:
 except ModuleNotFoundError:
     sys.exit("\nBiopython not installed\n")
 
-""" This script allows to filter contigs in fasta/fastq files """
-
 parameters = ["length_max", "length_min", "seq_present", "seq_absent"]
 
 
@@ -44,26 +42,26 @@ def check_extension():
 def seq_filter(file_ext):
     param = sys.argv[1]
     value = sys.argv[2]
-    fasta_sequences = SeqIO.parse(sys.argv[3], file_ext)
+    fast_sequences = SeqIO.parse(sys.argv[3], file_ext)
     seq_output = []
 
     if param == "length_max":
-        for seq in fasta_sequences:
+        for seq in fast_sequences:
             if len(seq.seq) <= int(value):
                 seq_output.append(seq)
 
     elif param == "length_min":
-        for seq in fasta_sequences:
+        for seq in fast_sequences:
             if len(seq.seq) >= int(value):
                 seq_output.append(seq)
 
     elif param == "seq_present":
-        for seq in fasta_sequences:
+        for seq in fast_sequences:
             if value in seq.seq:
                 seq_output.append(seq)
 
     elif param == "seq_absent":
-        for seq in fasta_sequences:
+        for seq in fast_sequences:
             if value not in seq.seq:
                 seq_output.append(seq)
 
