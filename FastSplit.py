@@ -7,9 +7,6 @@ try:
 except ModuleNotFoundError:
     sys.exit("\nBiopython not installed\n")
 
-""" This script allows to split fasta/fastq files in smaller files with a maximum number of contigs per file or a
-maximum length of all contigs per file """
-
 parameters = ["length_max", "contigs_max"]
 
 
