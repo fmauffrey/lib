@@ -45,12 +45,12 @@ def check_extension():
 def seq_split(file_ext):
     param = sys.argv[1]
     value = sys.argv[2]
-    fasta_sequences = SeqIO.parse(sys.argv[3], file_ext)
+    fast_sequences = SeqIO.parse(sys.argv[3], file_ext)
 
     if param == "contigs_max":
         seq_groups = []  # store the sequences to be saved together as lists
         seq_list = []
-        for fasta in fasta_sequences:
+        for fasta in fast_sequences:
             if len(seq_list) < int(value):
                 seq_list.append(fasta)
             else:
@@ -67,7 +67,7 @@ def seq_split(file_ext):
         seq_groups = []  # store the sequences to be saved together as lists
         seq_list = []
         length = 0
-        for fasta in fasta_sequences:
+        for fasta in fast_sequences:
             if len(fasta.seq) > int(value):
                 sys.exit(f"\n{fasta.description} is longer than indicated value\n"
                          "Exiting ...\n")
