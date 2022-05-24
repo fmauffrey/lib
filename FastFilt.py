@@ -31,12 +31,12 @@ def check_arg():
 
 def check_extension():
     extension = sys.argv[3].split(".")[-1]
-    if extension in ["fa", "fasta"]:
+    if extension in ["fa", "fna", "fasta"]:
         return "fasta"
     elif extension in ["fq", "fastq"]:
         return "fastq"
     else:
-        sys.exit("\nIncorrect file format. File should end in .fq, .fastq, .fa or .fasta.\n")
+        sys.exit("\nIncorrect file format. File should end in .fq, .fastq, .fa, .fna or .fasta.\n")
 
 
 def seq_filter(file_ext):
