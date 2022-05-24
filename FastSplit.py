@@ -52,7 +52,7 @@ def seq_split(file_ext):
                 seq_list.append(fasta)
             else:
                 seq_groups.append(seq_list)
-                seq_list = []
+                seq_list = [fasta]
         if seq_list:
             seq_groups.append(seq_list)
 
