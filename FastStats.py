@@ -18,7 +18,7 @@ def check_arg():
 
 def check_extension():
     extension = sys.argv[1].split(".")[-1]
-    if extension in ["fa", "fna" "fasta"]:
+    if extension in ["fa", "fna", "fasta"]:
         return "fasta"
     elif extension in ["fq", "fastq"]:
         return "fastq"
