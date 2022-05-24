@@ -33,3 +33,12 @@ Parameters:
 FastStats can print different information of a fasta/fastq file.
 
 FastStats.py [file]
+
+### FastCheck
+
+FastCheck can scan sequences string and return bases composition
+
+FastCheck.py [parameter] [file]  
+Parameters:  
+*bases_stat* = sequence nucleotides composition   
+*filter_non_atgc* = output only sequences composed of ATGC
