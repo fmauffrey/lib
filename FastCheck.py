@@ -36,7 +36,7 @@ def atgc(file_ext):
     fast_sequences = SeqIO.parse(sys.argv[2], file_ext)
 
     for seq in fast_sequences:
-        comp = {}
+        comp = {"A": 0, "T": 0, "C": 0, "G": 0}
         for char in seq.seq:
             if char in comp:
                 comp[char] += 1
@@ -44,10 +44,9 @@ def atgc(file_ext):
                 comp[char] = 1
 
         gc = round((comp["G"]+comp["C"])/(comp["G"]+comp["C"]+comp["A"]+comp["T"])*100, 2)
-        comp_sorted = sorted(comp)
 
         if param == "bases_stat":
-            string_comp = " ".join(f"{x}:{comp_sorted[x]}" for x in comp_sorted)
+            string_comp = " ".join(f"{x}:{comp[x]}" for x in comp)
             print(f"{seq.id}\t{string_comp}\tGC:{gc} %")
 
         elif param == "filter_non_atgc":
