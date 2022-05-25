@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 
 import sys
+import math
 
 try:
     from Bio import SeqIO
+    from Bio.SeqRecord import SeqRecord
 except ModuleNotFoundError:
     sys.exit("\nBiopython not installed\n")
 
-parameters = ["length_max", "contigs_max"]
+parameters = ["length_max", "contigs_max", "length_split"]
 
 
 def check_arg():
@@ -18,15 +20,12 @@ def check_arg():
         print(f"\n{sys.argv[1]} parameter not valid\n")
         return False
     else:
-        if sys.argv[1] in ["length_max", "contigs_max"]:
-            try:
-                int(sys.argv[2])
-                return True
-            except ValueError:
-                print("\nlength_max, contigs_max: Value must be an integer\n")
-                return False
-        else:
+        try:
+            int(sys.argv[2])
             return True
+        except ValueError:
+            print("\nParameter value must be an integer\n")
+            return False
 
 
 def check_extension():
@@ -41,14 +40,14 @@ def check_extension():
 
 def seq_split(file_ext):
     param = sys.argv[1]
-    value = sys.argv[2]
+    value = int(sys.argv[2])
     fast_sequences = SeqIO.parse(sys.argv[3], file_ext)
 
     if param == "contigs_max":
         seq_groups = []  # store the sequences to be saved together as lists
         seq_list = []
         for fasta in fast_sequences:
-            if len(seq_list) < int(value):
+            if len(seq_list) < value:
                 seq_list.append(fasta)
             else:
                 seq_groups.append(seq_list)
@@ -65,10 +64,10 @@ def seq_split(file_ext):
         seq_list = []
         length = 0
         for fasta in fast_sequences:
-            if len(fasta.seq) > int(value):
+            if len(fasta.seq) > value:
                 sys.exit(f"\n{fasta.description} is longer than indicated value\n"
                          "Exiting ...\n")
-            elif length + len(fasta.seq) < int(value):
+            elif length + len(fasta.seq) < value:
                 seq_list.append(fasta)
                 length += len(fasta.seq)
             else:
@@ -81,6 +80,23 @@ def seq_split(file_ext):
             with open(f"{sys.argv[3]}_{x}.fasta", "w") as output:
                 SeqIO.write(seq_groups[x], output, file_ext)
 
+    elif param == "length_split":
+        seq_list = []
+        for seq in fast_sequences:
+            if len(seq.seq) < value:
+                seq_list.append(seq)
+            else:
+                nb = int(math.trunc(len(seq.seq) / value) + 1)
+                for x in range(1, nb + 1):
+                    record = SeqRecord(seq.seq[(x * value) - value:(x * value)],
+                                       id=seq.id,
+                                       name=seq.name,
+                                       description=seq.description + "-" + str(x))
+                    if len(record.seq) != 0:
+                        seq_list.append(record)
+
+        SeqIO.write(seq_list, f"{sys.argv[3]}_split{value}.fasta", "fasta")
+
 
 if __name__ == "__main__":
     if check_arg():
@@ -88,10 +104,11 @@ if __name__ == "__main__":
         seq_split(seq_type)
     else:
         sys.exit("\n#####################################\n"
-                 "########## FastSplit.py ############\n"
+                 "########## FastSplit.py #############\n"
                  "#####################################\n"
                  "\nSplit fasta/fastq file into multiple files based on chosen parameter\n\n"
                  "Usage: FastSplit.py [parameter] [value] [file]\n\n"
                  "Parameters are:\n"
                  "length_max = maximum cumulated length of contigs per file\n"
-                 "contigs_max = maximum number of contigs per file\n\n")
+                 "contigs_max = maximum number of contigs per file\n"
+                 "length_split = split sequences at specific length (output = fasta)")

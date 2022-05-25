@@ -15,7 +15,8 @@ FastSplit can split a fasta/fastq file into multiple smaller files based on a fi
 FastSplit.py [parameter] [value] [file]  
 Parameters:  
 *length_max* = maximum cumulated length of contigs per file  
-*contigs_max* = maximum number of contigs per file
+*contigs_max* = maximum number of contigs per file  
+*length_split* = split sequences at specific length (output = fasta)
 
 ### FastFilt
 
