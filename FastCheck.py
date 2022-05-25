@@ -43,9 +43,11 @@ def atgc(file_ext):
             else:
                 comp[char] = 1
 
+        gc = round((comp["G"]+comp["C"])/(comp["G"]+comp["C"]+comp["A"]+comp["T"])*100, 2)
+
         if param == "bases_stat":
             string_comp = " ".join(f"{x}:{comp[x]}" for x in comp)
-            print(f"{seq.id} -> {string_comp}")
+            print(f"{seq.id}\t{string_comp}\tGC:{gc} %")
 
         elif param == "filter_non_atgc":
             if len(comp) == 4:
