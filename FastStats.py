@@ -39,12 +39,14 @@ def stats(file_ext):
     max_length = max(seq_length)
     min_length = min(seq_length)
     mean_length = int(round(statistics.mean(seq_length), 0))
+    median_length = int(statistics.median(seq_length))
 
     print(f"\nNumber of sequences = {seq_num}"
           f"\nTotal sequences length = {total_length} bp"
           f"\nMaximum sequence length = {max_length} bp"
           f"\nMinimum sequence length = {min_length} bp"
-          f"\nAverage sequence length = {mean_length} bp")
+          f"\nAverage sequence length = {mean_length} bp"
+          f"\nMedian sequence length = {median_length} bp")
 
 
 if __name__ == "__main__":
