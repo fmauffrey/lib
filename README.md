@@ -30,7 +30,7 @@ This can be useful for online analyses with file size limits (e.g. NCBI Blast).
 
 FastFilt filters out sequences from fasta/fastq files based on a filtering parameter.
 
-    FastSplit.py [parameter] [value] [file]  
+    FastFilt.py [parameter] [value] [file]  
 
 - file: a fasta/fastq file
 - parameter:
