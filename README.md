@@ -1,23 +1,19 @@
-# FastManip
+Most of the scripts use Biopython for the analysis. It must be installed in your environment for using these scripts:
 
-FastManip is a collection of scripts allowing diverse manipulation of fasta/fastq files. 
-FastManip scripts are based on Biopython which must be installed in the local environment.
+```
+pip instal biopython
+```
 
-### Requirement
-
-Python >= 3.8  
-Biopython >= 1.79  
-
-    pip instal biopython
-
-### FastSplit
+## FastSplit
 
 FastSplit splits a fasta/fastq file into multiple smaller files based on a maximum
 number of sequence per file or a maximum cumulated sequences length per file. It can 
 also split sequences into multiple sequence at a given length.
 This can be useful for online analyses with file size limits (e.g. NCBI Blast). 
 
-    FastSplit.py [parameters] [value] [file]  
+```
+FastSplit.py [parameters] [value] [file]
+```
  
 - file: a fasta/fastq file
 - parameter:
@@ -26,11 +22,13 @@ This can be useful for online analyses with file size limits (e.g. NCBI Blast).
   - *length_split* -> split sequences at specific length (output = fasta)
 - value: 
 
-### FastFilt
+## FastFilt
 
 FastFilt filters out sequences from fasta/fastq files based on a filtering parameter.
 
-    FastFilt.py [parameter] [value] [file]  
+```
+FastFilt.py [parameter] [value] [file]
+```
 
 - file: a fasta/fastq file
 - parameter:
@@ -42,21 +40,25 @@ FastFilt filters out sequences from fasta/fastq files based on a filtering param
 (for *seq_present* and *seq_absent*)
 
 
-### FastStats
+## FastStats
 
 FastStats can output statistics of a fasta/fastq file (number of sequences, 
 maximum/minimum sequences length, total length and sequences length mean/median.
 
-    FastStats.py [file]
+```
+FastStats.py [file]
+```
 
 - file: a fasta/fastq file
 
-### FastCheck
+## FastCheck
 
 FastCheck scans sequences string and returns nucleotides composition or print sequences 
 with only A/T/C/G bases.
 
-    FastCheck.py [parameter] [file]  
+```
+FastCheck.py [parameter] [file]
+```
  
 - file: a fasta/fastq file
 - parameters:
