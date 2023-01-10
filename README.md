@@ -64,3 +64,15 @@ FastCheck.py [parameter] [file]
 - parameters:
   - *bases_stat* -> sequence nucleotides composition 
   - *filter_non_atgc* -> prints sequences composed of A/T/G/C only.
+
+## collapse_and_count
+
+Remove duplicate sequences in a fasta file based on sequence description. The count of each
+sequence is kept and added in the header.
+
+```
+collapse_and_count.py input output
+```
+ 
+- input: input fasta file (nucl or prot)
+- output: output fasta file
