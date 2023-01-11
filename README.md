@@ -76,3 +76,15 @@ collapse_and_count.py input output
  
 - input: input fasta file (nucl or prot)
 - output: output fasta file
+
+## get_maps
+
+Takes a list of Kegg KOs as input in a file and return a list of Kegg pathways with the number of KO including in each pathway.
+
+```
+get_maps.py -i FILE [-o FOLDER] [-l FOLDER]
+```
+ 
+-i: file with KOs
+-o: output folder [.\]
+-l: log folder [.\]
