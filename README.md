@@ -15,12 +15,12 @@ This can be useful for online analyses with file size limits (e.g. NCBI Blast).
 FastSplit.py [parameters] [value] [file]
 ```
  
-  -file: a fasta/fastq file
-  -parameter:
+  -file: a fasta/fastq file  
+  -parameter:  
     -*length_max* -> maximum cumulated length of sequences per file  
     -*contigs_max* -> maximum number of sequences per file  
-    -*length_split* -> split sequences at specific length (output = fasta)
-  -value
+    -*length_split* -> split sequences at specific length (output = fasta)  
+  -value  
 
 ## FastFilt
 
@@ -30,14 +30,14 @@ FastFilt filters out sequences from fasta/fastq files based on a filtering param
 FastFilt.py [parameter] [value] [file]
 ```
 
-  -file: a fasta/fastq file
-  -parameter:
+  -file: a fasta/fastq file  
+  -parameter:  
     -*length_max* -> maximum length of contigs  
     -*length_min* -> minimum length of contigs  
     -*seq_present* -> contigs containing the sequence (or base)  
-    -*seq_absent* -> contigs not containing the sequence (or base)
+    -*seq_absent* -> contigs not containing the sequence (or base)  
   -value: sequences length (for *length_max* and *length_min*) or a sequence STRING 
-  (for *seq_present* and *seq_absent*)
+  (for *seq_present* and *seq_absent*)  
 
 
 ## FastStats
@@ -49,7 +49,7 @@ maximum/minimum sequences length, total length and sequences length mean/median.
 FastStats.py [file]
 ```
 
-  -file: a fasta/fastq file
+  -file: a fasta/fastq file  
 
 ## FastCheck
 
@@ -59,10 +59,10 @@ with only A/T/C/G bases.
 ```
 FastCheck.py [parameter] [file]
 ```
-  -file: a fasta/fastq file
-  -parameters:
+  -file: a fasta/fastq file  
+  -parameters:  
     -*bases_stat* -> sequence nucleotides composition 
-    -*filter_non_atgc* -> prints sequences composed of A/T/G/C only.
+    -*filter_non_atgc* -> prints sequences composed of A/T/G/C only.  
 
 ## collapse_and_count
 
@@ -72,8 +72,8 @@ sequence is kept and added in the header.
 ```
 collapse_and_count.py input output
 ```
-  -input: input fasta file (nucl or prot)
-  -output: output fasta file
+  -input: input fasta file (nucl or prot)  
+  -output: output fasta file  
 
 ## get_maps
 
@@ -82,9 +82,9 @@ Takes a list of Kegg KOs as input in a file and return a list of Kegg pathways w
 ```
 get_maps.py -i FILE [-o FOLDER] [-l FOLDER]
 ```
-  -i: file with KOs
-  -o: output folder [.\]
-  -l: log folder [.\]
+  -i: file with KOs  
+  -o: output folder [.\]  
+  -l: log folder [.\]  
 
 ## build_pathways_matrix
 
@@ -93,5 +93,5 @@ The script takes as input pathway counts file generated with get_maps.py and cre
 ```
 build_pathways_matrix.py -f FOLDER [-o FILE]
 ```
-  -f FOLDER   folder containing pathways count files
-  -o FILE     output matrix name [KO_matrix.csv]
+  -f FOLDER   folder containing pathways count files  
+  -o FILE     output matrix name [KO_matrix.csv]  
