@@ -95,3 +95,27 @@ build_pathways_matrix.py -f FOLDER [-o FILE]
 ```
   -f FOLDER   folder containing pathways count files  
   -o FILE     output matrix name [KO_matrix.csv]  
+
+## rf_functions
+
+Utility functions for random forests using the randomForest package in R.
+
+```
+rf_overfitting_test <- function(table, target, mtry, ntree, index_split, iteration, type, maxnode = NULL, print=TRUE)
+```
+Compute the difference in Mean Squared Error between the model and predictions. Usefull for determining if a model is overfitting or not.
+
+```
+best_rf <- function(table, target, mintree, maxtree, step)
+```
+Find the best combination of mtry and ntree values in order to obtain the best model.
+
+```
+remove_least_imp <- function(table, model, proportion)
+```
+Only keep most important predictors. Usefull for decomplexing model, lowering overfitting and calculation time.
+
+```
+best_maxnode <- function(table, target, mtry, ntree, min, max, step)
+```
+Find the maxnode value optimizing the model. Use it in combination with best_rf for model tuning.
