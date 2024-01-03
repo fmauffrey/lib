@@ -115,7 +115,33 @@ remove_least_imp <- function(table, model, proportion)
 ```
 Only keep most important predictors. Usefull for decomplexing model, lowering overfitting and calculation time.
 
+## gbk_commands
+
+Different functions to use with similar Genbank files. Useful for sequence vizualisation with tools like Clinker.
+
 ```
-best_maxnode <- function(table, target, mtry, ntree, min, max, step)
+gbk_commands.py find -i [FOLDER]
 ```
-Find the maxnode value optimizing the model. Use it in combination with best_rf for model tuning.
+Find genes common to all Genbank files. Duplicated genes are ignored.
+
+  -i: Folder with all Genbank files
+
+```
+gbk_commands.py order [-h] -i FOLDER -o FOLDER -t STR
+```
+Re-order Genbank files considering a gene in common as origin.
+
+  -i: Folder with all Genbank files
+  -o: Output folder for all reordered Genbank files
+  -t: Target gene considered as origin
+
+```
+gbk_commands.py extract [-h] -i FOLDER -o FOLDER -t STR -r NUM
+```
+Extract region surrounding a specified gene.
+
+  -i: Folder with all Genbank files
+  -o: Output folder for all extracted regions
+  -t: Target gene
+  -r: Sequence length to extract before and after the target
+
